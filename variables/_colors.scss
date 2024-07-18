@@ -1,0 +1,33 @@
+$colorsMap: (
+    primary-d40: #98711A,
+    primary-hover: #e4aa28,
+    primary: #FDBD2C,
+    primary-40: #FED780,
+    primary-10: #FFF8EA,
+    white: #FFFFFF,
+    white-t10: rgba(#FFFFFF, .1),
+    surface-ground: #F0F3F6,
+    surface-dark-ground: #0A0909,
+    black: #08102E,
+    body-text: #0A0909,
+    subtle-text: rgba(#0A0909, .7),
+    subtle-text2: rgba(#0A0909, .5),
+    subtle-text3: rgba(#0A0909, .3),
+    black-text: #0A0909,
+    succes-d40: #14714A,
+    succes-hover: #1EA96F,
+    succes: #21BC7B,
+    succes-40: #7AD7B0,
+    succes-10: #E9F8F2,
+    danger-d40: #961422,
+    danger-hover: #E11F33,
+    danger: #FA2239,
+    danger-40: #fc7a88,
+    danger-10: #ffe9eb,
+);
+
+:root {
+  @each $name, $value in $colorsMap {
+    --clr-#{"" + $name}: #{$value};
+  }
+}

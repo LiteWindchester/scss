@@ -1,0 +1,41 @@
+// Wheel
+.wheel {
+  --_rotation: 0deg;
+  margin-block: auto;
+  overflow: hidden;
+
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1;
+
+  img {
+    width: 100%;
+  }
+
+  // .wheel__rotating
+  &__rotating {
+    overflow: hidden;
+    transform: rotate(var(--_rotation, 0deg));
+    transition: transform 5s cubic-bezier(0, 0, 0, 1);
+
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      z-index: 0;
+    }
+
+    img {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  // .wheel__static
+  &__static {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+  }
+}

@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &--primary {
+    border-radius: 9999vh;
+    background-color: var(--clr-primary);
+    color: var(--clr-body-text);
+  }
+
+  &--secondary {
+    border-radius: 9999vh;
+    color: var(--clr-white);
+    border: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  &--small {
+    padding: 14px 15px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+
+  &--medium {
+    padding: 20px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  &--big {
+    padding: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+}

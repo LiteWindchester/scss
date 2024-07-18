@@ -1,0 +1,255 @@
+// Modal
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0 0 0 / 80%);
+  z-index: 2;
+  display: flex;
+  align-items: end;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s ease-out;
+
+  // .modal.active
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  // .modal__content
+  &__content {
+    max-height: 90dvh;
+    width: 100%;
+    background-color: var(--clr-white);
+    border-radius: 16px 16px 0 0;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: .2s ease-out;
+  }
+
+  // .modal--transparent .modal__content
+  &--transparent &__content {
+    background-color: transparent;
+  }
+
+  // .modal--fill-height .modal__content
+  &--fill-height &__content {
+    height: 100%;
+  }
+
+  // .modal--fullscreen .modal__content
+  &--fullscreen &__content {
+    height: 100%;
+    max-height: 100dvh;
+  }
+
+  // .modal--black .modal__content
+  &--black &__content {
+    background-color: var(--clr-surface-dark-ground);
+    color: var(--clr-white);
+
+    a:not(.btn) {
+      color: var(--clr-primary);
+    }
+  }
+
+  // .modal.active .modal__content
+  &.active &__content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  // .modal__close-line
+  &__close-line {
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+
+    // .modal__close-line::after
+    &::after {
+      content: '';
+      position: absolute;
+      width: 96px;
+      height: 6px;
+      border-radius: 9999vh;
+      background-color: var(--clr-body-text);
+      opacity: .2;
+      top: calc(50% - 3px);
+      left: calc(50% - 48px);
+    }
+  }
+
+  // .modal--black .modal__close-line::after
+  &--black &__close-line::after {
+    background-color: var(--clr-white);
+  }
+
+  // .modal__body
+  &__body {
+    max-height: calc(90dvh - 40px);
+    overflow: auto;
+    padding-inline: 16px;
+    padding-bottom: 24px;
+
+    @media (min-width: 1024px) {
+      max-width: var(--container-max-width);
+      margin-inline: auto;
+    }
+  }
+
+  // .modal--fullscreen .modal__body
+  &--fullscreen &__body {
+    height: 100%;
+    max-height: 100dvh;
+  }
+ 
+  // .modal__close
+  &__close {
+    --_size: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    width: var(--_size);
+    height: var(--_size);
+    border-radius: 50%;
+
+    position: fixed;
+    z-index: 1;
+    bottom: 76px;
+    left: calc(50% - var(--_size) / 2);
+    background-color: rgba(0 0 0 / 50%);
+    color: var(--clr-white);
+  }
+}
+
+.modal-product-media {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: -16px;
+  margin-bottom: -24px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 100dvh;
+  }
+}
+
+// Info (modals)
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+  
+  &:has(.info__buttons) {
+    align-items: stretch;
+    text-align: left;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    > * {
+      flex-grow: 1;
+    }
+  }
+}
+
+// Deliverry Config UI
+.delivery-config {
+  // .delivery-config__title
+  &__title {
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--clr-surface-dark-ground);
+  }
+
+  // .delivery-config__item
+  &__item {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background-color: var(--clr-white);
+    border-radius: 10px;;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--clr-subtle-text2);
+    gap: 10px;
+    border: 1px solid rgba(0 0 0 / 10%);
+    font-size: 16px;
+    line-height: 22px;
+    cursor: pointer;
+
+    &::after {
+      --_size: 24px;
+
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.625 18.75L15.375 12L8.625 5.25' stroke='%230A0909' stroke-opacity='0.3' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: var(--_size);
+      height: var(--_size);
+      min-width: var(--_size);
+    }
+
+    &.disabled, &[data-disabled] {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+
+    & + & {
+      margin-top: 8px;
+    }
+  }
+
+  // .delivery-config__result-item
+  &__result-item {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // .delivery-config__clear
+  &__clear {
+    color: var(--clr-danger);
+    cursor: pointer;
+  }
+
+  // .delivery-config__price
+  &__price {
+    font-weight: 500;
+  }
+
+  // .delivery-config__result-hint
+  &__result-hint {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--clr-subtle-text2);
+  }
+
+  // .delivery-config__result-info
+  &__result-info {
+    --icon-size: 20px;
+
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--clr-succes-d40);
+  }
+}

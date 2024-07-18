@@ -1,0 +1,65 @@
+.input {
+  & + & {
+    margin-top: 20px;
+  }
+
+  // .input__label
+  &__label {
+    display: grid;
+    gap: 4px;
+  }
+
+  &__name {
+    font-weight: 500;
+    color: var(--clr-subtle-text2);
+    margin-bottom: 4px;
+  }
+
+  // .input__label
+  &.search-input &__label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+
+      padding: 12px 16px;
+      border: 1px solid rgba(0 0 0 / 10%);
+      border-radius: 10px;
+
+      transition: border-color .2s ease;
+
+      &:focus-within {
+        border-color: var(--clr-primary);
+      }
+    }
+
+  // .input__field
+  &__field {
+    &::placeholder {
+      font-size: 16px;
+      line-height: 22px;
+      color: var(--clr-subtle-text2);
+      opacity: .7;
+    }
+  }
+
+  &:not(.search-input) &__field {
+    padding: 12px 16px;
+    border: 1px solid rgba(0 0 0 / 10%);
+    border-radius: 10px;
+
+    transition: border-color .2s ease;
+
+    &--with-r-arr {
+      padding-right: 62px;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.625 18.75L15.375 12L8.625 5.25' stroke='%230A0909' stroke-opacity='0.3' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      background-position: calc(100% - 12px) 50%;
+      background-repeat: no-repeat;
+      background-size: 24px;
+    }
+
+    &:focus {
+      border-color: var(--clr-primary);
+    }
+  }
+}

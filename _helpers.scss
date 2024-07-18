@@ -1,0 +1,78 @@
+@use "variables/colors" as c;
+
+/**
+SCSS Trick:
+  .classname {
+    :where(&) {
+      ...
+    }
+  }
+gives 0 specificity (thanks to :where),
+but provides IDE class auto-completions
+
+while simple :where(.classname) { ... }
+- does NOT provide IDE auto-completions
+ */
+
+.block { :where(&) { display: block; } }
+.i-block { :where(&) { display: inline-block; } }
+.flex { :where(&) { display: flex; } }
+.i-flex { :where(&) { display: inline-flex; } }
+.inline { :where(&) { display: inline; } }
+
+.flex,
+.i-flex {
+  &.flex-column { :where(&) { flex-direction: column; } }
+  &.flex-align-center { :where(&) { align-items: center; } }
+  &.flex-align-end { :where(&) { align-items: flex-end; } }
+  &.flex-justify-center { :where(&) { justify-content: center; } }
+  &.flex-justify-end { :where(&) { justify-content: flex-end; } }
+  &.flex-justify-between { :where(&) { justify-content: space-between; } }
+  &.flex-align-start { :where(&) { align-items: flex-start; } }
+  &.flex-align-stretch { :where(&) { align-items: stretch; } }
+  &.flex-center { :where(&) { align-items: center; justify-content: center; } }
+}
+
+.float-left { :where(&) { float: left; } }
+.float-right { :where(&) { float: right; } }
+
+.position-absolute { :where(&) { position: absolute; } }
+.position-relative { :where(&) { position: relative; } }
+.position-fixed { :where(&) { position: fixed; } }
+
+.white-space-nowrap { :where(&) { white-space: nowrap; } }
+.text-center { :where(&) { text-align: center; } }
+.m-center { :where(&) { margin: 0 auto; } }
+.w-100 { :where(&) { width: 100%; } }
+
+.pointer-events-none { :where(&) { pointer-events: none; } }
+.cursor-pointer { :where(&) { cursor: pointer; } }
+
+.caps { :where(&) { text-transform: uppercase; } }
+.text-capitalize { :where(&) { text-transform: capitalize; } }
+.nowrap { :where(&) { white-space: nowrap } }
+
+.sys-hide[class~="sys-hide"] { // high importance
+  display: none;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.text-right { :where(&) { text-align: right; } }
+.text-transform-none { :where(&) { text-transform: none; } }
+
+
+@each $name, $color in c.$colorsMap {
+  .c-#{"" + $name} {
+    :where(&) {
+      color: var(--clr-#{"" + $name});
+    }
+  }
+
+  .bg-#{"" + $name} {
+    :where(&) {
+      background-color: var(--clr-#{"" + $name});
+    }
+  }
+}

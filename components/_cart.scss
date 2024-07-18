@@ -1,0 +1,128 @@
+// Cart
+.cart {
+  margin-bottom: 32px;
+
+  // .cart__items
+  &__items {
+    display: grid;
+    gap: 8px;
+  }
+
+  // .cart__item
+  &__item {
+    padding: 12px;
+    border-radius: 12px;
+    background-color: var(--clr-white);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 12px;
+  }
+
+  // .cart__item-image
+  &__item-image {
+    img {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  // .cart__item-name-line
+  &__item-name-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  // .cart__item-remove
+  &__item-remove {
+    --icon-size: 16px;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    min-width: var(--icon-size);
+
+    color: var(--subtle-text3);
+    opacity: .3;
+  }
+
+  // .cart__item-qty-price
+  &__item-qty-price {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  // .cart__item-qty
+  &__item-qty {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    > * {
+      --_soze: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: var(--_soze);
+      height: var(--_soze);
+      min-width: var(--_soze);
+    }
+  }
+
+  // .cart__item-qty-btn
+  &__item-qty-btn {
+    border-radius: 50%;
+    border: 1px solid rgba(0 0 0 / 10%);
+  }
+
+  // .cart__totals
+  &__totals {
+    display: grid;
+    gap: 8px;
+  }
+
+  // .cart__totals-item
+  &__totals-item {
+   // .cart__totals-item--big
+   &--big {
+    margin-top: 16px;
+   }
+  }
+
+  // .cart__totals-hint
+  &__totals-hint {
+    color: var(--clr-subtle-text);
+  }
+
+  // .cart__delivery-time
+  &__delivery-time {
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--clr-succes-d40);
+    background-color: var(--clr-succes-10);
+  }
+
+  // .cart__inputs-title
+  &__inputs-title {
+    margin-bottom: 8px;
+  }
+
+  // .cart__submit-btn
+  &__submit-btn {
+    margin-top: 20px;
+  }
+}
+
+.cart-box {
+  padding: 16px;
+  background-color: var(--clr-white);
+  border-radius: 12px;
+
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+}
